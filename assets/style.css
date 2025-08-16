@@ -1,0 +1,12 @@
+cat > assets/style.css <<'EOF'
+
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#111;background:#fff}
+.header{padding:16px;text-align:center;background:#0f172a;color:#fff;border-bottom:4px solid #facc15}
+.btn{display:inline-block;margin-top:8px;padding:10px 16px;border-radious:999px;background:#facc15;color:#111;text-decoration:none:font-weight:700}
+.hero{padding:24px 16px;max-width:900px;margin:0 auto}
+.hero h2{margin-top:0}
+.form{padding:24px 16px;max-width:900px;margin:0 auto}
+iframe{border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.08) }
+.footer{padding:20px;text-align:center;background:#f8fafc;color:#475569}
+EOF
