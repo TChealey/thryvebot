@@ -1,42 +1,49 @@
-cat > index.html <<'EOF'
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thryve Group LLLP - Junk Removal</title>
   <link rel="stylesheet" href="assets/style.css" />
+  <style>
+  .container{max-width:900px;margin:0 auto;padding:24px 16px}
+  .hero{background:#0f172a;color:#fff;padding:32px 16px;border-bottom:4px solid #facc15;text-align:center}
+  .cta{display:inline-block;margin-top:16px;padding:10px 16px;border-radius:999px;background:#f8fafc;color:#475569}
+  .section h2{margin:0 0 8px 0}
+  .iframe-wrap{margin-top:16px}
+  .iframe-wrap iframe{width:100%;height:1100px;border:0;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+  .footer{padding:20px;text-align:center;background:#f8fafc;color:#475569}
+  </style>
 </head>
 <body>
-  <header class="header">
+  <header class="hero">
     <h1>Thryve Group LLLP - Junk Removal</h1>
-    <p>Charlotte Huntersville Concord Matthews</p>
-    <a class="btn" href="tel:+18668479832">Call (866) 847-9832</a>
-  </header>
+    <p>Serving Charlotte, NC and surrounding areas</p>
+    <a class="cta" href="tel:18668479832">Call (866) 847-9832</a>
+   </header>
 
-  <main>
-    <section class="hero">
-      <h2>Clear the Clutter-Get a Free Quote</h2>
-      <ul>
-	<li>Furniture & appliances</li>
-	<li>Yard debris & construction waste</li>
-	<li>Garage, attic & estate cleanouts</li>
-      </ul>
-      <p><small>Licensed & insured We donate & recycle whenver possible.</small></p>
-   </section>
+   <main class="container">
+     <section class="section">
+       <h2>Clear the Clutter - Get a Free Quote</h2>
+       <ul>
+	 <li>Furniture &amp; appliances</li>
+	 <li>Yard debris &amp; construction waste</li>
+	 <li>Garage, attic &amp; estate cleanouts</li>
+       </ul>
+       <p>Licensed &amp; insured </p>
+     </section>
 
-   <section id="quote" class="form">
-     <h3>Request Your Quote</h3>
-     <!-- <iframe src="https://docs.google.com/forms/d/e/1FAlpQLSdxmP0N-CNywHUBzWEf54fPLaystX2DVGbg6z7bv1kaOkonlw/viewform?embedded=true" width="640" height="1990" frameborder="0" marginheight="0" marginwidth="0">Loading...</frame>
-     <p class="consent"><small>By submitting, you consent to be contacted by phone, text or email about your request.</small></p>
-   </section>
- </main>
+     <section class="section">
+       <h3>Request Your Quote</h3>
+       <div class="iframe-wrap">
+	 <iframe
+	   src=<iframe src="https://docs.google.com/forms/d/e/1FAlpQLSdxmP0N-CNywHUBzWEf54fPLaystX2DGbg6z7bvlkaOkoNlw/viewform?embedded=true" width="640" height="1990" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+         </div>
+      </section>
+    </main>
 
- <footer class="footer">
-   <p>Email: <a href="mailto:info@thryvegroup.biz">info@thryvegroup.biz</a></p>
-   <p>© <span id="y"></span> Thryve Group LLLP</p>
- </footer>
-
- <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
-</body>
+    <footer class="footer">
+      &copy; 2025 Thryve Group LLLP. All rights reserved.
+    </footer>
+  </body>
 </html>
-EOF
