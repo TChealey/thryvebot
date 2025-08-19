@@ -1,55 +1,114 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Thryve Group LLLP - Junk Removal</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Junk Removal Quote | Thryve Group LLLP</title>
   <style>
-  .container{max-width:900px;margin:0 auto;padding:24px 16px}
-  .hero{background:#0f172a;color:#fff;padding:32px 16px;border-bottom:4px solid #facc15;text-align:center}
-  .cta{display:inline-block;margin-top:16px;padding:10px 16px;border-radius:999px;background:#f8fafc;color:#475569}
-  .section h2{margin:0 0 8px 0}
-  .iframe-wrap{margin-top:16px}
-  .iframe-wrap iframe{width:100%;height:1100px;border:0;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
-  .footer{padding:20px;text-align:center;background:#f8fafc;color:#475569}
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 010px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 200px;
+      height: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      background: #000;
+      color: #fff;
+      padding: 15px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+     background: #444;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #777;
+    }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <h1>Thryve Group LLLP - Junk Removal</h1>
-    <p>Serving Charlotte, NC and surrounding areas</p>
-    <a class="cta" href="tel:18668479832">Call (866) 847-9832</a>
-   </header>
 
-   <main class="container">
-     <section class="section">
-       <h2>Clear the Clutter - Get a Free Quote</h2>
-       <ul>
-	 <li>Furniture &amp; appliances</li>
-	 <li>Yard debris &amp; construction waste</li>
-	 <li>Garage, attic &amp; estate cleanouts</li>
-       </ul>
-       <p>Licensed &amp; insured </p>
-     </section>
+  <div class="container">
 
-     <section class="section">
-       <h3>Request Your Quote</h3>
-       <div style="position:relative;width:100%;max-width:800px;margin:0 auto;height:2000px;">
-	 <iframe 
-	    src="https://docs.google.com/forms/d/e/1FAlpQLSdxmP0N-CNywHUBzWEf54fPLaystX2DVGbg6z7bv1kaOkoNlw/viewform?embedded=true"                 width="100%"
-            height="1900"
-            frameborder="0"
-            marginheight="0"
-            marginwidth="0">
-	 Loading...
-         </iframe>
-       </div>
-     </section>
-    </main>
+    <div class="logo">
+      <img src="images/logo.png" alt="Thryve Group Logo">
+    </div>
 
-    <footer class="footer">
-      &copy; 2025 Thryve Group LLLP. All rights reserved.
-    </footer>
-  </body>
+    <h1>Request Junk Removal</h1>
+
+    <form action="https://hooks.zapier.com/hooks/catch/24273717/uthmrdl/" method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" name="name" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" name="phone" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" name="email">
+
+      <label for="address">Pickup Address</label>
+      <textarea name="address" rows="2" required></textarea>
+
+      <label for="items">What do you need removed?</label>
+      <textarea name="items" rows="3" required></textarea>
+
+      <label for="time">Preferred Date/Time</label>
+      <input type="text" name="time">
+
+      <button type="submit>Send My Request</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Thryve Group LLLP. All rights reserved.
+  </footer>
+
+</body>
 </html>
