@@ -334,6 +334,28 @@
      }
    }
  });
+
+<script>
+async function handleLeadSubmit(e) {
+  e.preventDefault();
+
+  const form = document.getElementById('leadForm");
+  const formData = new FormData(form);
+  
+  try {
+    await fetch("https://hooks.zapier.com/hooks/catch/24273717/uthmrdl/', {
+      method: "POST",
+      body: formData
+    });
+
+    form.style.display = "none";
+    document.getElementById("leadThanks".style.display = "block";
+   
+   } catch (error) {
+     alert("Something went wrong. Please try again.");
+     console.error(error);
+   }
+}
 </script>
 
 </body>
