@@ -83,7 +83,7 @@
 
     <h1>Request Junk Removal</h1>
 
-    <form id="leadForm" action="https://hooks.zapier.com/hooks/catch/24273717/uthmrdl/" method="POST">
+    <form id="leadForm" method="POST" onsubmit="return handleLeadSubmit(event)">
       <label for="name">Full Name</label>
       <input type="text" name="name" required>
 
