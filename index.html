@@ -83,7 +83,7 @@
 
     <h1>Request Junk Removal</h1>
 
-    <form id="leadForm" method="POST" onsubmit="return handleLeadSubmit(event)">
+    <form id="leadForm" onsubmit="handleLeadSubmit(event)">
       <label for="name">Full Name</label>
       <input type="text" name="name" required>
 
@@ -349,7 +349,7 @@ async function handleLeadSubmit(e) {
     });
 
     form.style.display = "none";
-    document.getElementById("leadThanks".style.display = "block";
+    document.getElementById("leadThanks").style.display = "block";
    
    } catch (error) {
      alert("Something went wrong. Please try again.");
