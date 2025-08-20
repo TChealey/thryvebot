@@ -111,151 +111,178 @@
     &copy; 2025 Thryve Group LLLP. All rights reserved.
   </footer>
 <style>
-  .tg-bot-launcher{
-    position:fixed; right:22px; bottom:22px; width:58px; height:58px;
-    border-radius:50%; background:#0f172a; color:#fff; display:flex;
-    align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(0,0,0,.2);
-    cursor:pointer; z-index:9999; font-weight: 700; font-size:22px;
-  }
-  .tg-bot-panel{
-    position:fixed; right:22px; bottom:92px; width:340px; max-width:92vw;
-    background:#fff; border-radius:16px; box-shadow:0 16px 40px rgba(0,0,0,.2);
-    overflow:hidden; display:none; z-index:9999; font-family:system-ui,Arial;
-  }
-  .tg-bot-header{ background:#0f172a; color#fff; padding:14px 16px; }
-  .tg-bot-body{ padding:12px 12px 8px; max-height:60vh; overflow:auto; }
-  .tg-msg{ margin:8px 0; display:flex; gap:8px; }
-  .tg-msg.me{ justify-content:flex-end; }
-  .tg-bubble{ max-width:78%; padding:10px 12px; border-radius:14px; font-size:14px; line-height:1.35 }
-  .tg-bubble.bot{ background:#f1f5f9; color:#0f172a; border-top-left-radius:6px; }
-  .tg-bubble.me{ background:#0f172a; color:#fff; border-top-right-radius:6px; }
-  .tg-input{ display:flex; gap:8px; padding:10px 12 px 14px; border-top:1px solid #e5e7eb }
-  .tg-input input,.tg-input textarea,.tg-input select{
-    flex:1; padding:10px 12 px; border:1px solid #d1d5db; border-radius:10px; font-size:14px 
-  }
-  .tg-btn{ background:#0f172a; color:#fff; border:0; padding:10px 14px; border-radius:10px; cursor:pointer }
-  .tg-hint{ font-size:12px; color:#64748b; margin-top:-2px; }
+  .tg-bot-launcher{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;
+    background:#0f172a;color:#fff;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,.2);cursor:pointer;z-index:9999}
+  .tg-bot-plane{position:fixed;right:22px;bottom:92px;width:340px;max-width:92vw;background:#fff;
+    border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.2);overflow:hidden;display:none;z-index:9999}
+  .tg-bot-header{background:#0f172a;color:#fff;padding:14px 16px}
+  .tg-bot-body{padding:12px 12px 8px;max-height:60vh;overflow:auto;font-family:system-ui,Arial}
+  .tg-msg{margin:8px 0;display:flex;gap:8px}
+  .tg-msg.me{justify-content:flex-end}
+  .tg-bubble{max-width:78%;padding:10px 12px;border-radius:14px;font-size:14px;line-height:1.35}
+  .tg-bubble.bot{background:#f1f5f9;color:#0f172a;border-top-left-radius:6px}
+  .tg-bubble.me{background:#0f172a;color:#fff;border-top-right-radius:6px}
+  .tg-input{display:flex;gap:8x;padding:10px 12px 14px;border-top:1px solid #e5e7eb}
+  .tg-input input{flex:1;padding:10px 12 px;border:1px solid #d1d5db;border-radius:10px;font-size:14px}
+  .tg-btn{background:#0f172a;color:#fff;border:0;padding:10px 14px;border-radius:10px;cursor:pointer}
+  .tg-chip{background:#e2e8f0;color:#0f172a;border:0;border-radius:999px;padding:8px 12px;margin:4px;
+    cursor:pointer;font-size:13px}
 </style>
 
-<div class="tg-bot-launcher" id"tgBotLauncher" aria-label="Chat for a fast quote">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill:"white">
-    <path d="M20 2H4a2 2 0 00-2 2v1814-4h14a2 2 0 002-2V4a2 2 0 00-2-2zm-4 9H8v-2h8v2zm0-4H8V5h8v2z"/>
+<div class="tg-bot-launcher" id="tgBotLauncher" aria-label="Chat for a fast quote">
+
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="white">
+    <path d="M20 2H4a2 2 0 00-2 2v1814-4h14a2 2 0 002-2V4a2 2 0 00-2-2zM8 7h8v2H8V7zm0 4h8v2H8v-2z"/>
   </svg>
 </div>
-<div class="tg-bot-panel" id="tgBotPanel" role+'dialog" aria-label="Junk Removal Quote Bot">
+
+<div class="tg-bot-panel" id="tgBotPanel" role="dialog" aria-label="Junk Removal Lead Bot">
   <div class="tg-bot-header">
-    <strong>Thryve Quick Quote</strong><br>
-    <span style="font-size:12px;opacity:.8">Answer a few questions-takes under a minute.</span>
+    <strong>Thryve Quick Request</strong><br/>
+    <span style="font-size:12px;opacity:.8">Tell us a few details-we'll call/text right away.</span>
   </div>
   <div class="tg-bot-body" id="tgBotBody"></div>
   <div class="tg-input" id="tgBotInput">
     <input id="tgInputField" autocomplete="off" placeholder="Type here..." />
-    <button class="tg-btn" id="tgSendBtn">Send</button>
+    <button class="tg-btn" id+"tgSendBtn">Send</button>
   </div>
 </div>
 
 <script>
-(() => {
+(()=> {
   const HOOK = "https://hooks.zapier.com/hooks/catch/24273717/uthmrdl/";
   const launcher = document.getElementById('tgBotLauncher');
-  const panel = document.getElementById('tgBotBody');
+  const panel = document.getElementById('tgBotPanel');
   const body = document.getElementById('tgBotBody');
   const input = document.getElementById('tgInputField');
   const send = document.getElementById('tgSendBtn');
 
   const state = {
     step: 0,
-    data: { source: 'junk.thryvegroup.biz (chatbot)' }
+    data: { source: 'junk.thryvegroup.bix (chatbot)', items_list:[] }
   };
 
   const steps = [
-    { key:'name',    q:"Great! What's your full name?" },
-    { key:'phone',   q:"Best phone number to text/call?", validate: v => /[\d\d-d+\.\(\) ]{7,}/.test(v) || "Please enter a valid phone number."
-    { key:'email',   q:"Email (optional)?", optional: true },
+    { key:'name', q:"Great! What's your full name?" },
+    { key:'phone', q:"Best phone number to text/call?", validate:v+>/[\d\-\+\.\(\) ]{7,}/.test(v)||"Please enter a valid phone number." },
     { key:'address', q:"Pickup address (street, city)?" },
-    { key:'items',   q:"What do you need removed? (sofa, boxes, yard waste, etc.)" },
-    { key:'time",    q:"Preferred date/time? (e.g., tomorrow 2-4pm)", optional:true },
-    { key:'confirm', q:"Anything else we should know? (or type 'no')" , optional:true}
-  ];
+    { key:'picker', q:"What items are we taking? Tap any that apply, then type **done**.},
+    { key:"itemsFree', q:"(Optional) Add any extra details aobut the items:", optional:true },
+    { key:'time', q:"Preferred date/time? (optional)", optional:true},
+    { key:'email;, q:"Email (optional for confirmation):", optional:true},
+    { key:'note', q:"Anything else we should know? (or type 'no')", optional:true}
+   ];
 
-  function toggle(open){
-    panel.style.display = open ? 'block' : 'none';
-    if(open){ body.innerHTML=''; setTimeout(start, 150); }
-  }
+   function toggle(open){ panel.style.display=open?'block':'none'; if(open){body.innerHTML=''; setTimeout(start,150);} }
+   function bot(text){ const w=document.createElement('div'); w.className='tg-msg';
+     const b=document.createElement('div'); b.className='tg-bubble bot'; b.innerText=text;
+     w.appendChild(b); body.appendChild(w); body.scrollTop=body.scrollHeight; }
+   function me(text){ cnst w=document.createElement('div'); w.className='tg-msg me';
+     const b=document.createElement('div'); b.className='tg-bubble me'; b.innerText=text;
+     w.appendChild(b); body.appendChild(w); body.scrollTop=body.scrollHeight; }
 
-  function bot(text){
-    const wrap = document.createElement('div'); wrap.className='tg-msg';
-    const b = document.createElement('div'); b.className='tg-bubble bot'; b.textContent = text;
-    wrap.appendChild(b); body.appendChild(wrap); body.scrollTop = body.scrollHeight;
-  }
-  function me(text){
-    const wrap = document.createElement('div'); wrap.className='tg-msg me';
-    const b = document.createElement('div'); b.clasName='tg-bubble me'; b.textContent = text;
-    wrap.appendChild(b); body.appendChild(wrap); body.scrollTop = body.scrollHeight;
-  }
-
-  function start(){
-    bot("Hi! I can get your junk removal request started.");
-    setTimeout(()=> bot(steps[state.step].q), 400);
-    input.focus();
-  }
-
-  async function submitToZapier(payload){
-    try{
-      await fetch(HOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-      return true;
-    }catch(e){ return false; }
-  }
-
-  async function next(answer){
-    const curr = steps[state.step];
-    const val = (answer||'').trim();
-    if(!curr.optional && !val){ bot("Please enter a response.") return; }
-
-    if(curr.validate){
-      const res = curr.validate(val);
-      if(res !== true && res 1== undefined && res !== false){
-	bot(res); return;
-      }
-      if(res == false){ bot("Please enter a valid value."); return; }
+   function start(){
+     bot("Hi! We'll grab a few details and a team member will contact you shortly.");
+     setTimeout(()=> bot(steps[state.step].q), 400);
+     input.focus();
    }
 
-   if(curr.key!=='confirm') state.data[curr.key] = val || '';
-   
-   state.step++;
+   const item0ptions = ["Couch","Mattress","Refrigerator","Washer/Dryer","TV","Boxes/Bagged Trash","Yard Waste","Other"];
+   function showPicker(){
+     const row = document.createElement('div');
+     item0ptions.forEach(label=>{
+       const b=document.createElement('button'); b.type='button'; b.className='tg-chip'; b.textContent=label;
+       b.onclick=()=>{ me(label); if(label==="Other"){ bot("Describe the other item(s):"); waitOneAnswer(desc=>{
+	   if(desc){ me(desc); state.data.items_list.push(desc); bot("Added. Select more or type **done**."); }
+       }); } else { state.data.items_list.push(label); bot("Added. Select more or type **done**."); }
+       row.appendChild(b);
+     }); 
+     body.appendChild(row); body.scrollTop=body.scrollHeight;
 
-   if(state.step < steps.length){
-     bot("Thanks! Sending your request now...");
-     const ok = await submitToZapier({
-       ...state.data,
-       name: state.data.name,
-       phone: state.data.phone,
-       email: state.data.email || '',
-       address: state.data.address,
-       items: state.data.items,
-       time: state.data.time || '',
-     });
-
-     if(ok){
-       bot("Got it! We'll text/call you shortly to confirm details and give a quote. Thank you!");
-
-       input.disabled = true;send.disabled = true;
-     }else{
-       bot("Hmm.. couldn't send just now. You can also call us at (866) 847-9832.");
-     }
-   }
-  
-   function handleSend(){
-     const v = input.value.trim();
-     if(!v) return;
-     me(v); input.value='';
-     next(v);
+     const doneHandler = (e)=>{
+       if(e.key!=='Enter') return;
+       const v=input.value.trim().toLowerCase();
+       if(v!=='done') return;
+       me(input.value); input.vallue=''; input.removeEventListener('keydown', doneHandler);
+       state.data.items = state.data.items_list.join(', ');
+       next();
+     };
+     input.addEventListener('keydown', doneHandler);
    }
 
-   launcher.addEventListener('click', ()=> toggle(panel.style.display!=='block'));
-   send.addEventListener('click', handleSend);
-   input.addEventListener('keydown', e=>{ if9e.key==="Enter'){e.preventDefault(); handleSend(); }});
-  })();
-  </script>
+   function waitOneAnswer(cb){
+     const handler=(e)=>{ if(e.key!=="Enter') return; const v=input.value.trim(); input.value='';
+	     input.removeEventListener('keydown', handler); cb(v); };
+	   input.addEventListener('keydown', handler);
+   }
+
+   async function sendToZap(payload){
+     try{
+       await fetch(HOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+       return true;
+     }catch(e){ return false; }
+   }
+
+   function handleUserAnswer(val){
+     const curr = steps[state.step];
+     const v = (val??'').trim();
+
+     if(curr.key == 'picker'){ showPicker(); return; }
+
+     if(!curr.optional && !v){ bot("Please enter a response."); return; }
+     if(curr.validate){
+       const ok = curr.validate(v);
+       if(ok !== true && ok){ bot(ok); return; }
+       if(ok === false){ bot("Please enter a valid value."); return; }
+    }
+
+    me(v);
+    if(curr.key==='itemsFree'){ state.data.items_extra=v; }
+    else if(curr.key==='note'){ state.data.note=v; }
+    else { state.data[curr.key]=v; }
+
+    next();
+  }
+
+  async function next(){
+    state.step++;
+    if(state.step < steps.length){
+      bot(steps[state.step].q);
+      if(steps[state.step].key==='picker') showPicker();
+      return;
+    }
+
+    bot("Thanks! Sending your request now...");
+    const ok = await sendToZap({
+      ...state.data,
+      name: state.data.name,
+      phone: state.data.phone,
+      email: state.data.email || '',
+      address: state.data.address,
+      items: state.data.items || stae.data.items_list.join(', '),
+      time: state.data.time || '',
+    });
+    if(ok){
+      bot("Request received. We'll call or text you shortly to confirm details and schedule pickup. If it's urgent, call (866) 847-9832.");
+      input.disabled=true; send.disabled=true;
+    }else{
+      bot("Couldn't send just now. Please try again or call (866) 847-9832.");
+    }
+  }
+
+  function handleSend(){
+    const v=input.value.trim();
+    if(!v) return;
+    handleUserAnswer(v);
+    input.value='';
+  }
+
+  laucher.addEventListener('click', ()=> toggle(panel.style.display!=='block'));
+  send.addEventListener('click', handleSend);
+  input.addEventListener('keydown', e=>{ if(e.key==="Enter'){ e.preventDefault(); handleSend(); }});
+
+})((;
+</script>
 </body>
 </html>
