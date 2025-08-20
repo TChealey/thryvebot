@@ -301,33 +301,40 @@
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn ? submitBtn.textContent : '';
 
       try {
-	if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...': }
+	if (submitBtn) {
+	  submitBtn.disabled = true;
+	  submitBtn.textContent = 'Sending...';
+	}
 	
-	const fd = new FormData(form);
-	const data = Object.fromEntries(fd.entries());
+       const formData = new FormData(form);
+       const data = Object.fromEntries(formData.entries());
 
-	data.source = 'junk.thryvegroup.biz (main form)';
+       data.source = 'junk.thryvegroup.biz (main form)';
+      
+       const HOOK = form.action;
 
-	await fetch(HOOK, {
-	  method: 'POST'
-	  headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
+       await fetch(HOOK, {
+	 method: 'POST'
+	 headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify(data),
+       });
 
-	form.reset();
-	if (thanks) thanks.style.display = 'block';
-      } catch (err) {
-	alert('Sorry, something went wrong. Please try again or call (866) 847-9832.');
-      } finally {
-	if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalText; }
-      }
-    });
-  }
- })();
+       form.reset();
+       if (thanks) thanks.style.display = 'block';
+     } catch (err) {
+	alert("Sorry, something went wrong. Please try again or call (866) 847-9832.");
+     } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+     }
+   }
+ });
 </script>
+
 </body>
 </html>
