@@ -83,7 +83,7 @@
 
     <h1>Request Junk Removal</h1>
 
-    <form action="https://hooks.zapier.com/hooks/catch/24273717/uthmrdl/" method="POST">
+    <form id="leadForm" action="https://hooks.zapier.com/hooks/catch/24273717/uthmrdl/" method="POST">
       <label for="name">Full Name</label>
       <input type="text" name="name" required>
 
@@ -106,7 +106,9 @@
         <button type="submit">Send My Request</button>
       </div>
     </form>
-
+    <p id="leadThanks" style="display:none; margin-top:12px; color:#0f172a;">
+      Thanks! We've received your request. We'll call/text you shortly.
+    </p>
   <footer>
     &copy; 2025 Thryve Group LLLP. All rights reserved.
   </footer>
@@ -273,6 +275,59 @@
   input.addEventListener('keydown', e=>{ if(e.key==="Enter'){ e.preventDefault(); handleSend(); }});
 
 })((;
+</script>
+<script>
+  (function () {
+    const HOOK = "https://hooks.zapier.com/hooks/catch/24273717/uthmrdl/";
+    const form = document.getElementById('leadForm');
+    const thanks = document.getElementById('leadThanks');
+    const launcher = document.getElementById('tgBotLauncher');
+
+    if (launcher) {
+      launcher.addEventListener('click', () => {
+	if (form) {
+	  form.scrollIntoView({ behavior: 'smooth', block: 'start'});
+	  
+          const first = form.querySelector('input, textarea, select');
+	  setTimeout(() => {
+	   form.style.outline = '3px solid #0f172a';
+	   if (first) first.focus();
+	   setTimeout(() => (form.style.outline = ''), 1200);
+	}, 400);
+      }
+    });
+  }
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.textContent : '';
+
+      try {
+	if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...': }
+	
+	const fd = new FormData(form);
+	const data = Object.fromEntries(fd.entries());
+
+	data.source = 'junk.thryvegroup.biz (main form)';
+
+	await fetch(HOOK, {
+	  method: 'POST'
+	  headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+	form.reset();
+	if (thanks) thanks.style.display = 'block';
+      } catch (err) {
+	alert('Sorry, something went wrong. Please try again or call (866) 847-9832.');
+      } finally {
+	if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalText; }
+      }
+    });
+  }
+ })();
 </script>
 </body>
 </html>
