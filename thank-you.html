@@ -3,19 +3,60 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Thank You!</title>
+  <title>Thank You! | Junk Removal Request</title>
+  <meta name="robots" content="noindex, nofollow" />
+
   <style>
-    body{font-family:Arial, sans-serif; background:#f7f7f7; margin:0; padding:48px; text-align:center}
-    .card{max-width:640px; margin:0 auto; background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:28px; box-shadow:0 10px 30px rgba(0,0,0,.06)}
-    h1{color:#16a34a}
-    a{display:inline-block; margin-top:16px; padding:10px 16px; background:#0f172a; color:#fff; text-deocration:none; border-radius:8px}
-   </style>
- </head>
- <body>
-   <div class="card">
-     <h1>Thank you!</h1>
-     <p>Your request was sent. We'll call or text you shortly to confirm your pickup window.</p>
-     <a href="index.html"><- Back to Home</a>
-   </div>
- </body>
+    body{
+      font-family: system-ui, Arial, sans-serif;
+      background:#f9f9f9;
+      margin:0;
+      padding:0; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      max-width:600px;
+      background:#fff;
+      border-radius:16px;
+      padding:40px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 {
+      color:#f4c20d;
+      font-size: 2.2rem;
+      margin-bottom:12px;
+    }
+    p {
+     color:#333;
+     font-size: 1.1rem;
+     margin-bottom: 20px;
+     line-height: 1.5;
+    }
+    .cta {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+    .cta:hover {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Thank You!</h1>
+    <p>Your junk removal request was sent successfully. Our team will call or text you shortly to confirm your pickup window. Need urgent help? Call <strong>(866) 847-9832</strong>.</p>
+
+    <a class="cta" href="/"><- Back to Home</a>
+  </div>
+</body>
 </html>
